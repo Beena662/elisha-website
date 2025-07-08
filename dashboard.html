@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Elisha Admin</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .dash-container{display:flex;min-height:100vh;font-family:'Poppins',sans-serif}
+    .dash-sidebar{width:260px;background:#2c3e50;color:#ecf0f1;position:fixed;inset:0 auto 0 0;padding-top:18px}
+    .dash-sidebar h1{font-size:1.2rem;font-weight:600;text-align:center;margin-bottom:1.6rem}
+    .dash-menu{list-style:none;padding:0}
+    .dash-menu li{margin:.25rem 0}
+    .dash-menu a{display:block;padding:.65rem 1.6rem;color:#bdc3c7;border-left:4px solid transparent;transition:.2s;font-size:.93rem}
+    .dash-menu a:hover,.dash-menu a.active{background:#34495e;color:#fff;border-left-color:var(--accent)}
+
+    .dash-main{margin-left:260px;width:calc(100% - 260px);padding:2rem 3%;}
+    .dash-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.6rem}
+    .dash-top h2{font-size:1.4rem;font-weight:600}
+    .dash-top .dash-actions button{background:#eee;border:none;padding:.55rem 1rem;border-radius:4px;font-size:.9rem;margin-left:.5rem;cursor:pointer}
+    .dash-top .dash-actions button.export{background:var(--accent);color:#fff}
+
+    .admin-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1.4rem}
+    .admin-card{background:#fff;border:1px solid #ddd;border-radius:6px;padding:.6rem;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,.05);display:flex;flex-direction:column;}
+    .admin-card img{width:100%;height:140px;object-fit:cover;border-radius:4px;margin-bottom:.4rem}
+    .admin-card h4{font-size:.9rem;font-weight:500;margin:.2rem 0;color:#111;min-height:34px}
+    .admin-card span{font-size:.75rem;color:#666}
+    .admin-card .adm-btns{margin-top:.4rem;display:flex;justify-content:center;gap:.4rem}
+    .adm-btns button{font-size:.7rem;padding:.35rem .6rem;border:none;border-radius:3px;cursor:pointer}
+    .adm-btns .edit{background:#3498db;color:#fff}
+    .adm-btns .del {background:#e74c3c;color:#fff}
+
+    .filter-bar-admin{display:flex;gap:.6rem;margin-bottom:1.3rem}
+    .filter-bar-admin input,.filter-bar-admin select{padding:.45rem .7rem;border:1px solid #ccc;border-radius:4px;font-size:.85rem}
+
+    @media(max-width:768px){
+      .dash-main{margin-left:0;width:100%}
+      .dash-sidebar{position:static;width:100%;display:flex;overflow-x:auto}
+      .dash-menu{display:flex}
+      .dash-menu a{border-left:none;border-bottom:4px solid transparent}
+      .dash-menu a:hover,.dash-menu a.active{border-bottom-color:var(--accent)}
+    }
+  </style>
+</head>
+<body>
+  <div class="dash-container">
+    <aside class="dash-sidebar">
+      <h1>Elisha Admin</h1>
+      <ul class="dash-menu" id="sideMenu">
+        <li><a href="#" data-cat="all" class="active"><i class="fa fa-table"></i> All Products</a></li>
+        <li><a href="#" data-cat="new"><i class="fa fa-star"></i> New Arrivals</a></li>
+        <li><a href="#" data-cat="stitched"><i class="fa fa-shirt"></i> Stitched</a></li>
+        <li><a href="#" data-cat="unstitched"><i class="fa fa-scissors"></i> Unstitched</a></li>
+        <li><a href="#" data-cat="luxury"><i class="fa fa-gem"></i> Luxury</a></li>
+        <li><a href="#" data-cat="university"><i class="fa fa-graduation-cap"></i> University Wear</a></li>
+        <li><a href="#" data-cat="sale"><i class="fa fa-tag"></i> Sales</a></li>
+      </ul>
+    </aside>
+
+    <main class="dash-main">
+      <div class="dash-top">
+        <h2 id="panelTitle">All Products</h2>
+        <div class="dash-actions">
+          <button class="export">Export</button>
+          <button>Create New</button>
+        </div>
+      </div>
+
+      <div class="filter-bar-admin">
+        <input type="text" placeholder="Search" id="searchBox">
+        <select id="categorySel">
+          <option value="all">Category</option>
+          <option value="new">New Arrivals</option>
+          <option value="stitched">Stitched</option>
+          <option value="unstitched">Unstitched</option>
+          <option value="luxury">Luxury</option>
+          <option value="university">University Wear</option>
+          <option value="sale">Sales</option>
+        </select>
+        <select id="sortSel">
+          <option value="last">Last Edit</option>
+          <option value="priceLow">Price Low→High</option>
+          <option value="priceHigh">Price High→Low</option>
+        </select>
+      </div>
+
+      <section class="admin-grid" id="adminGrid"></section>
+    </main>
+  </div>
+
+  <script>
+    const PRODUCTS=[
+      {id:1,cat:'new',        img:'images/hero-banner.jpg', name:'Monochrome Suit',        price:5990,lastEdit:'2025-07-05'},
+      {id:2,cat:'stitched',   img:'images/stitched1.jpg',  name:'Printed Lawn',           price:2490,lastEdit:'2025-07-01'},
+      {id:3,cat:'stitched',   img:'images/stitched2.jpg',  name:'Classic Shirt',          price:5690,lastEdit:'2025-07-03'},
+      {id:4,cat:'unstitched', img:'images/unstitched1.jpg',name:'Serenity Lawn 1‑Pc',     price:1190,lastEdit:'2025-07-04'},
+      {id:5,cat:'luxury',     img:'images/lux1.jpg',       name:'Emerald Silk Set',       price:12990,lastEdit:'2025-07-01'},
+      {id:6,cat:'university', img:'images/circle-university.jpg',name:'Campus Kurta',     price:1890,lastEdit:'2025-07-02'},
+      {id:7,cat:'sale',       img:'images/banner-sale.jpg',name:'Festive Sale Piece',     price:990,lastEdit:'2025-07-03'}
+    ];
+
+    const grid       = document.getElementById('adminGrid');
+    const sideMenu   = document.getElementById('sideMenu');
+    const categorySel= document.getElementById('categorySel');
+    const searchBox  = document.getElementById('searchBox');
+    const sortSel    = document.getElementById('sortSel');
+
+    function renderGrid(){
+      const currentCat = categorySel.value;
+      const term       = searchBox.value.toLowerCase();
+      const sortMode   = sortSel.value;
+
+      let list = PRODUCTS.filter(p=> (currentCat==='all'||p.cat===currentCat) && p.name.toLowerCase().includes(term));
+      if(sortMode==='priceLow')  list.sort((a,b)=>a.price-b.price);
+      if(sortMode==='priceHigh') list.sort((a,b)=>b.price-a.price);
+      if(sortMode==='last')      list.sort((a,b)=>b.lastEdit.localeCompare(a.lastEdit));
+
+      grid.innerHTML = list.map(p=>`<div class="admin-card" data-id="${p.id}">
+          <img src="${p.img}" alt="${p.name}">
+          <h4>${p.name}</h4>
+          <span>Rs. ${p.price.toLocaleString()}</span>
+          <div class="adm-btns"><button class="edit">Edit</button><button class="del">Delete</button></div>
+        </div>`).join('');
+    }
+
+    searchBox.oninput     = renderGrid;
+    categorySel.onchange  = renderGrid;
+    sortSel.onchange      = renderGrid;
+
+    sideMenu.addEventListener('click',e=>{
+      const link=e.target.closest('a[data-cat]');
+      if(!link) return;
+      e.preventDefault();
+      sideMenu.querySelectorAll('a').forEach(a=>a.classList.remove('active'));
+      link.classList.add('active');
+      categorySel.value = link.dataset.cat;
+      document.getElementById('panelTitle').textContent = link.dataset.cat==='all'?'All Products':link.textContent.trim();
+      renderGrid();
+    });
+
+    grid.addEventListener('click',e=>{
+      const id = e.target.closest('.admin-card')?.dataset.id;
+      if(!id) return;
+      if(e.target.classList.contains('edit'))  alert('Edit product #'+id+' (demo)');
+      if(e.target.classList.contains('del')){
+        if(confirm('Delete product #'+id+'? (demo)')){
+          const idx = PRODUCTS.findIndex(p=>p.id==id);
+          if(idx>-1){PRODUCTS.splice(idx,1);renderGrid();}
+        }
+      }
+    });
+
+    renderGrid();
+  </script>
+</body>
+</html>

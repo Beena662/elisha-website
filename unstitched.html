@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WOMEN’S Unstitched Fabric | Elisha</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .admin-sub{display:none;flex-direction:column}
+    .admin-sub.open{display:flex}
+    .menu-btn{display:flex!important}
+  </style>
+</head>
+<body>
+  <div class="top-strip">Free shipping on orders above PKR 3000</div>
+
+  <header class="site-header">
+    <a href="index.html" class="brand"><img src="images/elisha-logo.png" class="brand-logo" alt="Elisha">
+        <span class="brand-script">Elisha</span>
+      </a>
+
+    <button class="menu-btn" id="globalMenu"><i class="fa fa-bars"></i>&nbsp;Menu</button>
+
+    <nav class="menu-drop" id="globalMenuDrop">
+      <a href="new-arrivals.html">New Arrivals</a>
+      <a href="stitched.html">Stitched</a>
+      <a href="unstitched.html">Unstitched</a>
+      <a href="luxury.html">Luxury</a>
+      <a href="lawn.html">Lawn</a>
+      <a href="abaya.html">Abaya</a>
+      <a href="university.html">University Wear</a>
+      <a href="sale.html">Sales</a>
+      <a href="#" class="admin-toggle"><i class="fa fa-gear"></i>&nbsp;Admin</a>
+      <div class="admin-sub">
+        <a href="dashboard.html">Dashboard Home</a>
+        <a href="dashboard.html#products">Products</a>
+        <a href="dashboard.html#orders">Orders</a>
+      </div>
+    </nav>
+
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="stitched.html">Stitched</a></li>
+        <li><a class="active" href="unstitched.html">Unstitched</a></li>
+        <li><a href="luxury.html">Luxury</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-right">
+      <form class="search"><input type="text" placeholder="Search…"><button><i class="fa fa-search"></i></button></form>
+      <a href="#"><i class="fa-regular fa-user"></i></a>
+      <a href="#"><i class="fa-solid fa-bag-shopping"></i></a>
+      <a href="#"><i class="fa-regular fa-heart"></i></a>
+    </div>
+  </header>
+
+  <section class="unstitched-banner" style="background:url('images/unstitched-collection-banner.jpg') center/cover no-repeat;">
+    <div class="banner-content">
+      <h2 style="font-size:1rem;letter-spacing:.35rem;font-weight:500;margin-bottom:.4rem">WOMEN’S</h2>
+      <h1 style="font-size:2.4rem;letter-spacing:.05rem;margin-bottom:.8rem">Unstitched Suit</h1>
+      <p style="max-width:480px;margin:0 auto;font-size:.9rem;line-height:1.5">
+        Elisha offers a vast selection of women’s clothing to shop. Each season finds a careful assortment of clothing — trend‑driven and classic pieces are available.
+      </p>
+    </div>
+  </section>
+
+  <div class="filter-bar">
+    <button id="resetBtn"><i class="fa fa-sliders"></i>&nbsp;Reset</button>
+    <label class="ready-toggle"><input type="checkbox" id="readyOnly">&nbsp;ReadyShip</label>
+    <select id="lenFilter">
+      <option value="all">Length</option><option value="2.5">2.5 m</option><option value="3">3 m</option><option value="4">4 m</option>
+    </select>
+    <select id="priceFilter">
+      <option value="all">Price</option><option value="low">Low → High</option><option value="high">High → Low</option>
+    </select>
+  </div>
+
+  <section class="product-grid" id="productGrid">
+    <div class="product-card" data-len="2.5" data-ready="yes" data-price="1190"><img src="images/unstitched1.jpg" alt=""><h3>Serenity Lawn</h3><p>Lawn | 1 Piece</p><div class="price">Rs.&nbsp;1,190</div><a class="buy-btn" href="checkout.html?sku=UNS001&qty=1">Buy Now</a></div>
+    <div class="product-card" data-len="3"   data-ready="no"  data-price="2390"><img src="images/unstitched2.jpg" alt=""><h3>Blossom Lawn</h3><p>Lawn | 2 Piece</p><div class="price">Rs.&nbsp;2,390</div><a class="buy-btn" href="checkout.html?sku=UNS002&qty=1">Buy Now</a></div>
+    <div class="product-card" data-len="4"   data-ready="yes" data-price="3490"><img src="images/unstitched3.jpg" alt=""><h3>Pastel Lawn</h3><p>Lawn | 3 Piece</p><div class="price">Rs.&nbsp;3,490</div><a class="buy-btn" href="checkout.html?sku=UNS003&qty=1">Buy Now</a></div>
+    <div class="product-card" data-len="3"   data-ready="no"  data-price="3290"><img src="images/unstitched4.jpg" alt=""><h3>Classic Jacquard</h3><p>Jacquard | 3 Piece</p><div class="price">Rs.&nbsp;3,290</div><a class="buy-btn" href="checkout.html?sku=UNS004&qty=1">Buy Now</a></div>
+    <div class="product-card" data-len="3"   data-ready="yes" data-price="3890"><img src="images/unstitched5.jpg" alt=""><h3>Velvet Touch</h3><p>Velvet Blend | 3 Piece</p><div class="price">Rs.&nbsp;3,890</div><a class="buy-btn" href="checkout.html?sku=UNS005&qty=1">Buy Now</a></div>
+    <div class="product-card" data-len="2.5" data-ready="yes" data-price="7890"><img src="images/unstitched6.jpg" alt=""><h3>Summer Breeze</h3><p>Lawn | 3 Piece</p><div class="price">Rs.&nbsp;7,890</div><a class="buy-btn" href="checkout.html?sku=UNS006&qty=1">Buy Now</a></div>
+    <div class="product-card" data-len="3"   data-ready="no"  data-price="6690"><img src="images/unstitched7.jpg" alt=""><h3>Linen Stripe</h3><p>Linen | 3 Piece</p><div class="price">Rs.&nbsp;6,690</div><a class="buy-btn" href="checkout.html?sku=UNS007&qty=1">Buy Now</a></div>
+    <div class="product-card" data-len="3"   data-ready="yes" data-price="4590"><img src="images/unstitched8.jpg" alt=""><h3>Floral Mist</h3><p>Lawn | 3 Piece</p><div class="price">Rs.&nbsp;4,590</div><a class="buy-btn" href="checkout.html?sku=UNS008&qty=1">Buy Now</a></div>
+    <div class="product-card" data-len="4"   data-ready="no"  data-price="3590"><img src="images/unstitched9.jpg" alt=""><h3>Paisley Lawn</h3><p>Lawn | 3 Piece</p><div class="price">Rs.&nbsp;3,590</div><a class="buy-btn" href="checkout.html?sku=UNS009&qty=1">Buy Now</a></div>
+    <div class="product-card" data-len="2.5" data-ready="yes" data-price="5090"><img src="images/unstitched10.jpg" alt=""><h3>Chic Chiffon</h3><p>Chiffon | 3 Piece</p><div class="price">Rs.&nbsp;5,090</div><a class="buy-btn" href="checkout.html?sku=UNS010&qty=1">Buy Now</a></div>
+
+    <div class="product-card" data-len="3"   data-ready="yes" data-price="2990"><img src="images/unstitched11.jpg" alt=""><h3>Moonlight Lawn</h3><p>Lawn | 2 Piece</p><div class="price">Rs.&nbsp;2,990</div><a class="buy-btn" href="checkout.html?sku=UNS011&qty=1">Buy Now</a></div>
+    <div class="product-card" data-len="3"   data-ready="no"  data-price="3690"><img src="images/unstitched12.jpg" alt=""><h3>Royal Lawn</h3><p>Lawn | 3 Piece</p><div class="price">Rs.&nbsp;3,690</div><a class="buy-btn" href="checkout.html?sku=UNS012&qty=1">Buy Now</a></div>
+    <div class="product-card" data-len="4"   data-ready="yes" data-price="4090"><img src="images/unstitched13.jpg" alt=""><h3>Azure Lawn</h3><p>Lawn | 3 Piece</p><div class="price">Rs.&nbsp;4,090</div><a class="buy-btn" href="checkout.html?sku=UNS013&qty=1">Buy Now</a></div>
+    <div class="product-card" data-len="2.5" data-ready="yes" data-price="1890"><img src="images/unstitched14.jpg" alt=""><h3>Soft Pink</h3><p>Lawn | 2 Piece</p><div class="price">Rs.&nbsp;1,890</div><a class="buy-btn" href="checkout.html?sku=UNS014&qty=1">Buy Now</a></div>
+    <div class="product-card" data-len="2.5" data-ready="no"  data-price="2290"><img src="images/unstitched15.jpg" alt=""><h3>Dreamy Dots</h3><p>Lawn | 2 Piece</p><div class="price">Rs.&nbsp;2,290</div><a class="buy-btn" href="checkout.html?sku=UNS015&qty=1">Buy Now</a></div>
+    <div class="product-card" data-len="3"   data-ready="yes" data-price="4790"><img src="images/unstitched16.jpg" alt=""><h3>Tiffani Blended</h3><p>Blended Lawn | 3 Piece</p><div class="price">Rs.&nbsp;4,790</div><a class="buy-btn" href="checkout.html?sku=UNS016&qty=1">Buy Now</a></div>
+    <div class="product-card" data-len="2.5" data-ready="yes" data-price="1690"><img src="images/unstitched17.jpg" alt=""><h3>Botanic Lawn</h3><p>Printed | 1 Piece</p><div class="price">Rs.&nbsp;1,690</div><a class="buy-btn" href="checkout.html?sku=UNS017&qty=1">Buy Now</a></div>
+    <div class="product-card" data-len="4"   data-ready="no"  data-price="5290"><img src="images/unstitched18.jpg" alt=""><h3>Opal Jacquard</h3><p>Jacquard | 3 Piece</p><div class="price">Rs.&nbsp;5,290</div><a class="buy-btn" href="checkout.html?sku=UNS018&qty=1">Buy Now</a></div>
+    <div class="product-card" data-len="3"   data-ready="yes" data-price="2890"><img src="images/unstitched19.jpg" alt=""><h3>Sunset Lawn</h3><p>Lawn | 3 m</p><div class="price">Rs.&nbsp;2,890</div><a class="buy-btn" href="checkout.html?sku=UNS019&qty=1">Buy Now</a></div>
+    <div class="product-card" data-len="2.5" data-ready="yes" data-price="10490"><img src="images/unstitched20.jpg" alt=""><h3>Dream Weave</h3><p>Lawn | 3 Piece</p><div class="price">Rs.&nbsp;10,490</div><a class="buy-btn" href="checkout.html?sku=UNS020&qty=1">Buy Now</a></div>
+  </section>
+
+  <nav class="pagination">
+    <a href="#" class="active">1</a>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#">4</a>
+  </nav>
+  
+
+  <footer class="site-footer">
+    <div class="footer-wrap">
+      <div class="footer-left"><img src="images/elisha-logo.png" class="brand-logo" alt="Elisha"><div class="link-columns"><div class="link-group"><h4>CUSTOMER SERVICES</h4><ul><li><a href="#">Contact Us</a></li><li><a href="#">Delivery & Orders</a></li><li><a href="#">Returns & Exchanges</a></li><li><a href="#">Terms & Conditions</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Track My Order</a></li><li><a href="#">Payment Guides</a></li></ul></div></div></div>
+      <div class="footer-center"><h4>FOR ASSISTANCE</h4><p><i class="fa-brands fa-whatsapp"></i> 0322 677 3534</p><p><i class="fa-regular fa-envelope"></i> elisha@gmail.com</p><div class="center-divider"></div><div class="social-row"><a href="#"><i class="fa-brands fa-facebook-f"></i></a><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="#"><i class="fa-brands fa-tiktok"></i></a><a href="#"><i class="fa-brands fa-youtube"></i></a></div></div>
+      <div class="footer-right"><h4>CURRENCY</h4><div class="currency-line"><img src="images/pak-flag.png" alt=""><span>PKR</span></div><div class="link-group" style="margin-top:1.5rem"><h4>COMPANY</h4><ul><li><a href="#">About Us</a></li><li><a href="#">Careers</a></li><li><a href="#">Store Locator</a></li><li><a href="#">Store Addresses</a></li></ul></div></div>
+    </div>
+    <div class="footer-bottom">© 2025 Elisha Fashion Studio | All rights reserved</div>
+  </footer>
+
+  <script>
+    document.getElementById('globalMenu').onclick =
+      () => document.getElementById('globalMenuDrop').classList.toggle('open');
+
+    document.querySelector('.admin-toggle').onclick = e => {
+      e.preventDefault();
+      document.querySelector('.admin-sub').classList.toggle('open');
+    };
+  </script>
+
+  <script>
+    (() => {
+      const lenSel   = document.getElementById('lenFilter');
+      const readyChk = document.getElementById('readyOnly');
+      const priceSel = document.getElementById('priceFilter');
+      const grid     = document.getElementById('productGrid');
+      const resetBtn = document.getElementById('resetBtn');
+
+      function apply(){
+        const len = lenSel.value, ready = readyChk.checked, mode = priceSel.value;
+        [...grid.children].forEach(card=>{
+          const okLen = (len==='all'||card.dataset.len===len);
+          const okRdy = (!ready||card.dataset.ready==='yes');
+          card.style.display = (okLen&&okRdy)?'flex':'none';
+        });
+        if(mode!=='all'){
+          const cards=[...grid.querySelectorAll('.product-card')].filter(c=>c.style.display!=='none');
+          cards.sort((a,b)=>(+a.dataset.price-+b.dataset.price)*(mode==='low'?1:-1));
+          cards.forEach(c=>grid.appendChild(c));
+        }
+      }
+      lenSel.onchange = readyChk.onchange = priceSel.onchange = apply;
+      resetBtn.onclick = e => {e.preventDefault(); lenSel.value='all'; readyChk.checked=false; priceSel.value='all'; apply();};
+    })();
+  </script>
+</body>
+</html>
